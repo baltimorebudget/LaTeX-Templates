@@ -1,0 +1,11 @@
+output_dir: '../5_sota'
+lang: 'english'
+rmd_files: 
+  - ../../FY2023/0_automation_prelim_exec_sota//05_revenue/05_revenue.Rmd
+  - ../../FY2023/0_automation_prelim_exec_sota//05_revenue/05a_major_rev_forecast.Rmd
+  - ../../FY2023/0_automation_prelim_exec_sota//05_revenue/05bES_tax_credits.Rmd
+  - ../../FY2023/0_automation_prelim_exec_sota//05_revenue/05cES_prop_tax_one_cent.Rmd
+  - ../../FY2023/0_automation_prelim_exec_sota//05_revenue/05dES_prop_tax_expend.Rmd
+  - ../../FY2023/0_automation_prelim_exec_sota//05_revenue/05eES_revenue_detail_fund.Rmd
+  - ../../FY2023/0_automation_prelim_exec_sota//05_revenue/05fS_budgetary_funds_projected_rev.Rmd
+delete_merged_file: TRUE
