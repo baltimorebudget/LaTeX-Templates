@@ -1,0 +1,23 @@
+title: 'Fiscal 2023 Budget Book'
+bookdown::pdf_book:
+  template: null # doesn't override custom margins
+  includes:
+    in_header: header.tex
+    before_body: before_body.tex
+    after_body: after_body.tex
+  latex_engine: xelatex
+  pandoc_args: 'common.yml'
+  number_sections: false
+  fig_caption: false
+bookdown::gitbook:
+  split_by: rmd
+  number_sections: false
+  config:
+    toc:
+      collapse: subsection
+      scroll_highlight: yes
+      before: null
+      after: null
+    toolbar:
+      position: fixed
+always_allow_html: true

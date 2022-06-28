@@ -1,0 +1,25 @@
+\mainmatter
+
+```{r 01 wrapfig setup}
+# wrapfig
+# https://stackoverflow.com/questions/54100806/r-markdown-how-do-i-make-text-float-around-figures
+plot_def_hook <- knitr::knit_hooks$get("plot")  # save the default plot hook
+
+knitr::knit_hooks$set(plot = function(x, options) {  # set new plot hook ...
+  x <- plot_def_hook(x, options)  # first apply the default hook
+  if(!is.null(options$wrapfigure)) {  # then, if option wrapfigure is given ...
+    # create the new opening string for the wrapfigure environment ...
+    wf <- sprintf("\\begin{wrapfigure}{%s}{%g\\textwidth}",
+                  options$wrapfigure[[1]], options$wrapfigure[[2]])
+    x  <- gsub("\\begin{figure}", wf, x, fixed = T)  # and replace the default one with it.
+    x  <- gsub("{figure}", "{wrapfigure}", x, fixed = T)  # also replace the environment ending
+  }
+  return(x)
+})
+
+chapter_path <- "01_intro/"
+```
+
+```{r 01 Introduction Divider}
+format_divider("Introduction")
+```

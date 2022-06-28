@@ -1,0 +1,116 @@
+\usepackage{xcolor}
+    \usepackage{sectsty}
+    \usepackage{multicol}
+    \usepackage{booktabs}
+    \usepackage{longtable}
+    \usepackage{array}
+    \usepackage{fancyhdr}
+    \usepackage{makecell}
+    \usepackage{multirow}
+    \usepackage{placeins}
+    \usepackage{afterpage}
+    \usepackage{wrapfig}
+    \usepackage{float}
+    \usepackage{colortbl}
+    \usepackage{tabu}
+    \usepackage{threeparttable}
+    \usepackage{threeparttablex}
+    \usepackage[normalem]{ulem}
+    \usepackage{makecell}
+    \usepackage{titlesec}
+    \usepackage{fontspec}
+    \usepackage{microtype} % improves line breaks, justification
+    \usepackage{wrapfig} % allows for wrapping text around tables and figures
+    \usepackage{lscape}
+    \usepackage{pdfpages} % allows for insertion of multi-page pdfs
+    \usepackage{graphicx}
+    \pagestyle{fancy}
+    \setlength{\headheight}{15pt}
+
+    % hyperref is already loaded in default LaTex template
+    % adding option to turn off guessable names for links, forcing it to instead
+    % rely on consecutive identifers; this is more accurate for creating PDF bookmarks
+    \PassOptionsToPackage{hypertexnames=false}{hyperref}
+
+    % change header/footer font size
+    \newcommand{\changefont}{%
+        \fontsize{10}{12}\selectfont
+    }
+
+  % No headers on empty pages before new chapter
+  % http://www.markschenk.com/tensegrity/latexexplanation.html
+    \makeatletter
+    \def\cleardoublepage{\clearpage\if@twoside \ifodd\c@page\else
+    \thispagestyle{empty}
+    \hspace{0pt}\vfill
+    \begin{center} Intentionally left blank.\end{center}
+    \vfill\hspace{0pt}
+    \newpage
+    \if@twocolumn\hbox{}\newpage\fi\fi\fi}
+    \makeatother \clearpage{\pagestyle{empty}\cleardoublepage}
+
+    % https://stackoverflow.com/questions/40982836/latex-multicolumn-block-in-pandoc-markdown
+    \newcommand{\hideFromPandoc}[1]{#1}
+    \hideFromPandoc{
+      \let\Begin\begin
+      \let\End\end
+      }
+    \setlength{\columnsep}{2cm}
+
+    \fancyhead[LE]{\changefont\leftmark}
+    \fancyhead[LO]{\changefont{Fiscal 2023 Summary of the Adopted Budget}}
+    \fancyhead[RE]{\changefont{Fiscal 2023 Summary of the Adopted Budget}}
+    \fancyhead[RO]{\changefont\leftmark}
+
+    % change page number size
+    \fancyfoot[C]{\changefont\thepage}
+        \fancyfoot[L]{Draft generated 2022-06-28 10:51:09}
+    \setlength{\columnseprule}{1pt}
+
+    \definecolor{color_header}{RGB}{13, 8 ,135}
+    \definecolor{color_table_header}{RGB}{128, 172, 213}
+    \definecolor{color_table_total}{RGB}{128, 172, 213}
+    \definecolor{color_table_total_font}{RGB}{0, 0, 0}
+    \definecolor{color_table_subtotal}{RGB}{206, 206, 206}
+    \definecolor{color_divider}{RGB}{13, 8,135}
+
+    % equivalent of #
+
+    \assignpagestyle{\chapter}{empty}
+
+    % set new HUGE command for divider pages %
+    \newcommand\HUGE{\fontsize{60}{10}\selectfont}
+
+    \titleformat{\chapter}
+      {\normalfont\fontsize{5}{3}\bfseries\color{white}}{\thechapter}{1em}{}
+
+    % equivalent of ##
+
+    \titleclass{\section}{top} % start each section on a new page
+    \newcommand{\sectionbreak}{\clearpage}
+
+    \titlespacing*{\section}{0pt}{-2\baselineskip}{1em}
+
+    \titleformat{name=\section,page=odd}{\LARGE\bfseries\raggedleft\color{color_header}}{\thesection}{1em}{}[{\titlerule[1.5pt]}]
+    \titleformat{name=\section,page=even}{\LARGE\bfseries\raggedright\color{color_header}}{\thesection}{1em}{}[{\titlerule[1.5pt]}]
+
+    % equivalent of ###
+    \titleformat{\subsection}
+      {\normalfont\Large\bfseries\color{color_header}}{\thesubsection}{1em}{}
+
+    % equivalent of ###
+    \titleformat{\subsubsection}
+      {\normalfont\Large\color{color_header}}{\thesubsubsection}{1em}{}
+
+    % remove title pages before Table of Contents
+    \AtBeginDocument{\let\maketitle\relax}
+
+    % rename TOC from Contents to Table of Contents
+    \renewcommand{\contentsname}{Table of Contents}
+
+    % prevent page/column stretching by allowing odd and even bottoms of pages/columns to not match
+    \raggedbottom
+    \raggedcolumns
+
+    % allow for roman numerals before Intro section
+    \frontmatter
